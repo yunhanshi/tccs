@@ -5,21 +5,22 @@ This is a coding challenge solution for Transformative, it's base [Laravel](http
 #### Manual
 
 ```bash
-# Clone the project and run composer
+# Clone the project
 git clone https://github.com/yunhanshi/tccs.git
 
 cd tccs
 
-composer install
-
 # Copy .env
 cp .env.example .env
+
+# Run composer
+composer install
 
 # Migration and DB seeder (after changing your DB settings in .env)
 php artisan migrate --seed
 
-# Install passport
-php artisan passport:install
+# Install key
+php artisan key:generate
 
 # Install dependency with NPM
 npm install

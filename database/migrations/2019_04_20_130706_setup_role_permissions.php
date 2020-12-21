@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 use App\Models\Auth\Role;
 use App\Models\Auth\Permission;
-use App\Consts\Enum\Auth\Acl;
+use App\Models\Auth\Acl;
 
 class SetupRolePermissions extends Migration
 {

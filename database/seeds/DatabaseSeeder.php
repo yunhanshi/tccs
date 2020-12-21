@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('12345678'),
         ]);
 
-        $adminRole = Role::findByName(\App\Consts\Enum\Auth\Acl::ROLE_ADMIN);
+        $adminRole = Role::findByName(\App\Models\Auth\Acl::ROLE_ADMIN);
 
         $admin->syncRoles($adminRole);
 
