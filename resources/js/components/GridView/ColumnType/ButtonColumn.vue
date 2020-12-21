@@ -4,7 +4,7 @@
       <template v-for="(button, index) in column.buttons">
         <template v-if="button.icon">
           <el-tooltip v-if="getButtonVisible(row, button)" :key="index" :content="button.name" placement="top" :style="button.style" :disabled="getDisabled(row, button)">
-            <el-button :type="button.type" :size="buttonSize" :icon="button.icon" circle @click="button.clickEvent(row)"></el-button>
+            <el-button :type="button.type" :size="buttonSize" :icon="button.icon" circle @click="button.clickEvent(row)" />
           </el-tooltip>
         </template>
         <template v-else>

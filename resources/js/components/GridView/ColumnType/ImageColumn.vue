@@ -7,8 +7,7 @@
         :src="row[column.prop] || COMMONCONST.DEFAULT_HEAD_IMAGE"
         :fit="column.fit"
         @click="handleCick(row)"
-      >
-      </el-image>
+      />
     </template>
   </el-table-column>
 </template>

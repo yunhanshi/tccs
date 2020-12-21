@@ -4,7 +4,7 @@
     <div class="right-menu">
       <el-dropdown class="name-container right-menu-item hover-effect" trigger="click">
         <div class="name-wrapper">
-          <span>Hello, {{ name }} <i class="el-icon-arrow-down"></i></span>
+          <span>Hello, {{ name }} <i class="el-icon-arrow-down" /></span>
         </div>
         <el-dropdown-menu slot="dropdown">
           <a target="_blank" href="https://github.com/yunhanshi/tccs">

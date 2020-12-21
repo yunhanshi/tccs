@@ -1,5 +1,5 @@
 <template>
-  <el-table-column :key="column.key" :label="column.label" :sortable="column.sortable" :prop="column.prop" :min-width="column.minWidth" >
+  <el-table-column :key="column.key" :label="column.label" :sortable="column.sortable" :prop="column.prop" :min-width="column.minWidth">
     <template slot-scope="{row}">
       <div v-html="getCellValue(row, column)" />
     </template>
