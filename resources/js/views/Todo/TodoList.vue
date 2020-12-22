@@ -4,9 +4,9 @@
       <div style="color:#f44336;font-size:12px;margin-left:30px;">This chart auto refresh per 30s</div>
       <burndown-chart ref="burndownChart" />
     </el-row>
-    <grid-view ref="todoGridView" :columns="columns" :selection="true" :buttons="buttons" :pager="pager" :filters="filters" :resource="resource" />
+    <grid-view ref="todoGridView" :columns="columns" :buttons="buttons" :pager="pager" :filters="filters" :resource="resource" />
     <el-dialog :visible.sync="dialogVisible" :title="dialogType==='edit'?'Edit Task':'New Task'" width="80%">
-      <el-form :model="todoForm" label-width="200px" label-position="left">
+      <el-form ref="todoForm" :model="todoForm" :rules="todoRules" label-width="200px" label-position="left">
         <el-form-item label="Task Name" prop="task">
           <el-input v-model="todoForm.task" placeholder="Role Name" />
         </el-form-item>
@@ -109,22 +109,29 @@ export default {
       this.dialogType = 'edit';
       this.dialogVisible = true;
     },
-    async confirmTodoForm() {
-      const isEdit = this.dialogType === 'edit';
-      const { code, msg } = isEdit ? await todoResource.update(this.todoForm.id, this.todoForm) : await todoResource.store(this.todoForm);
-      if (code !== 200) {
-        this.$message({
-          message: msg || ('Fail to ' + this.dialogType + ' task'),
-          type: 'error',
-        });
-      } else {
-        this.$message({
-          message: msg || ('Success to ' + this.dialogType + ' task'),
-          type: 'success',
-        });
-        this.dialogVisible = false;
-        this.reloadData();
-      }
+    confirmTodoForm() {
+      this.$refs.todoForm.validate(async valid => {
+        if (valid) {
+          const isEdit = this.dialogType === 'edit';
+          const { code, msg } = isEdit ? await todoResource.update(this.todoForm.id, this.todoForm) : await todoResource.store(this.todoForm);
+          if (code !== 200) {
+            this.$message({
+              message: msg || ('Fail to ' + this.dialogType + ' task'),
+              type: 'error',
+            });
+          } else {
+            this.$message({
+              message: msg || ('Success to ' + this.dialogType + ' task'),
+              type: 'success',
+            });
+            this.dialogVisible = false;
+            this.reloadData();
+          }
+        } else {
+          console.log('error submit!');
+          return false;
+        }
+      });
     },
     handleDelete(row) {
       this.$confirm('Are you sure to DELETE task [' + row.task + '] ?', 'Notice', {

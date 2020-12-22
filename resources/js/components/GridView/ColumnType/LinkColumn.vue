@@ -1,5 +1,5 @@
 <template>
-  <el-table-column :key="column.key" :prop="column.prop" :label="column.label">
+  <el-table-column :key="column.key" :sortable="column.sortable" :prop="column.prop" :label="column.label">
     <template slot-scope="{row}">
       <span class="link-type" @click="handleCick(row)">{{ getCellValue(row, column) }}</span>
     </template>
