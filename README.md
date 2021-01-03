@@ -34,6 +34,7 @@ npm run production
 
 #### Docker
 ```sh
+# Make sure the Line Separator of tccs-entrypoint.sh is LF
 docker-compose up -d
 ```
 Build static files within Laravel container with npm
